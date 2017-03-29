@@ -6,16 +6,16 @@ class SearchLine
   def search(point_array)
   
     #массив входных точек
-    @array_point = Array.new
+    @array_point = []
     
     #массив всех допустимых линий
-    @line_list = Array.new
+    @line_list = []
     
     #массив результирующих точек
-    @points_result = Array.new
+    @points_result = []
     
     #массив результирующих линий
-    @lines_result = Array.new           
+    @lines_result = []         
     
     #заполняем массив точек данными из входного массива
     point_array.each{ |element|
