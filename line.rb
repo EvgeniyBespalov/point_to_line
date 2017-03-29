@@ -1,11 +1,11 @@
 class Line
   
-  attr_accessor :pointA, :pointB, :angile, :b
+  attr_accessor :point_a, :point_b, :angle, :b, :verticale
   
-  def initialize(pointA, pointB, angile, b)
-    @pointA = pointA
-    @pointB = pointB
-    @angile = angile
+  def initialize(point_a, point_b, angle, b, verticale)
+    @point_a = point_a
+    @point_b = point_b
+    @angle = angle
     @b = b
   end
 
