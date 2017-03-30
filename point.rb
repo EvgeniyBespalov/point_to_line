@@ -7,5 +7,9 @@ class Point
     @x = x
     @y = y
   end
+  
+  def to_s
+    return "\"" + @name + "," + @x.to_s + "," + @y.to_s + "\""
+  end
 
 end

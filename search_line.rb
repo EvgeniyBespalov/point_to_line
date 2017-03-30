@@ -29,7 +29,7 @@ class SearchLine
     
     get_valid_point
     
-    print_result
+    return @lines_result
     
   end
   
@@ -73,15 +73,4 @@ class SearchLine
     end  
   end
   
-  #выводим результат
-  def print_result
-    @lines_result.each do |lines|
-      print "["
-      lines.each do |point| 
-        print point.name + "," + point.x.to_s + "," + point.y.to_s + " "
-      end
-      puts "]"
-    end  
-  end
-
 end
