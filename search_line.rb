@@ -66,8 +66,8 @@ class SearchLine
             @points_result.push(line.point_b)
         end
         
-        @points_result = @points_result.uniq{ |p| p }
-        @lines_result.push(@points_result.sort_by{ |p| :name })
+        @points_result = @points_result.uniq
+        @lines_result.push(@points_result.sort_by{ |p| p.name })
 
       end   
     end  
