@@ -5,23 +5,19 @@ class SearchLine
 
   def search(point_array)
   
-    #инициализация переменных
     init_variable
     
-    #заполняем массив точек данными из входного массива
     get_point point_array
     
-    #создаем все допустимые линии
     create_all_line
     
-    #выбираем точки из линий в которых смещение и угол совпадают, с количеством линий больше 1
     get_valid_point
     
-    #выводим результат
     print_result
     
   end
   
+  #инициализация переменных
   def init_variable
     
     #массив входных точек
@@ -38,6 +34,7 @@ class SearchLine
       
   end
   
+  #заполняем массив точек данными из входного массива
   def get_point point_array
       
     point_array.each do |element|
@@ -47,6 +44,7 @@ class SearchLine
     
   end
   
+  #создаем все допустимые линии
   def create_all_line
     @array_point.each do |point_a|
       @array_point.select{|x| x != point_a}.each do |point_b|
@@ -58,6 +56,7 @@ class SearchLine
     end
   end
   
+    #выбираем точки из линий в которых смещение и угол совпадают, с количеством линий больше 1
   def get_valid_point
     @line_list.uniq{ |x| [x.angle, x.b, x.verticale] }.each do |angle|
       if @line_list.select {|l| (l.angle == angle.angle && l.b == angle.b && l.verticale == angle.verticale) }.count > 1
@@ -75,6 +74,7 @@ class SearchLine
     end  
   end
   
+  #выводим результат
   def print_result
     @lines_result.each do |lines|
       print "["
