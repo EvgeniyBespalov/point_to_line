@@ -1,5 +1,9 @@
 class Line
   
+  #point_a, point_b - points definition line
+  #angle - angle line
+  #b - offset ratio line
+  #verticale - flag line is verticale  
   attr_accessor :point_a, :point_b, :angle, :b, :verticale
   
   def initialize(point_a, point_b)
