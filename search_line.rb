@@ -5,6 +5,25 @@ class SearchLine
 
   def search(point_array)
   
+    #инициализация переменных
+    init_variable
+    
+    #заполняем массив точек данными из входного массива
+    get_point point_array
+    
+    #создаем все допустимые линии
+    create_all_line
+    
+    #выбираем точки из линий в которых смещение и угол совпадают, с количеством линий больше 1
+    get_valid_point
+    
+    #выводим результат
+    print_result
+    
+  end
+  
+  def init_variable
+    
     #массив входных точек
     @array_point = []
     
@@ -16,42 +35,30 @@ class SearchLine
     
     #массив результирующих линий
     @lines_result = []         
-    
-    #заполняем массив точек данными из входного массива
+      
+  end
+  
+  def get_point point_array
+      
     point_array.each do |element|
       temp_array = element.split ','
       @array_point.push(Point.new temp_array[0], temp_array[1].to_i, temp_array[2].to_i)
-    end    
+    end   
     
-    #создаем все допустимые линии
+  end
+  
+  def create_all_line
     @array_point.each do |point_a|
       @array_point.select{|x| x != point_a}.each do |point_b|
         if ((@line_list.select{|l| l.point_a == point_a && l.point_b == point_b}).length == 0 &&
           (@line_list.select{|l| l.point_a == point_b && l.point_b == point_a}).length == 0)
-            @line_list.push(Line.new point_a, point_b, 0, 0, false)
-        end     
+            @line_list.push(Line.new(point_a, point_b))
+        end
       end
     end
-    
-    #рассчитываем угол наклона линий    
-     @line_list.each do |line|
-       if (line.point_a.x == line.point_b.x)
-         line.verticale = true
-       else
-         line.angle = (line.point_a.y.to_f - line.point_b.y.to_f)/(line.point_a.x.to_f - line.point_b.x.to_f)
-       end
-    end  	 	
-    
-    #рассчитываем смещение линии    
-    @line_list.each do |line|
-       if line.verticale
-         line.b = line.point_a.x
-       else
-         line.b = line.point_a.y - line.point_a.x * line.angle
-       end
-    end       
-    
-    #выбираем точки из линий в которых смещение и угол совпадают, с количеством линий больше 1
+  end
+  
+  def get_valid_point
     @line_list.uniq{ |x| [x.angle, x.b, x.verticale] }.each do |angle|
       if @line_list.select {|l| (l.angle == angle.angle && l.b == angle.b && l.verticale == angle.verticale) }.count > 1
         @points_result.clear       
@@ -66,15 +73,16 @@ class SearchLine
 
       end   
     end  
-    
+  end
+  
+  def print_result
     @lines_result.each do |lines|
       print "["
       lines.each do |point| 
         print point.name + "," + point.x.to_s + "," + point.y.to_s + " "
       end
       puts "]"
-    end      
-    
+    end  
   end
 
 end
