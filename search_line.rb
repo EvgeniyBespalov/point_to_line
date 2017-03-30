@@ -3,22 +3,8 @@ require_relative 'line.rb'
 
 class SearchLine
 
-  def search(point_array)
-  
-    init_variable
-    
-    get_point point_array
-    
-    create_all_line
-    
-    get_valid_point
-    
-    print_result
-    
-  end
-  
   #инициализация переменных
-  def init_variable
+  def initialize
     
     #массив входных точек
     @array_point = []
@@ -32,6 +18,19 @@ class SearchLine
     #массив результирующих линий
     @lines_result = []         
       
+  end
+  
+  #search line from three or more point
+  def search(point_array)
+  
+    get_point point_array
+    
+    create_all_line
+    
+    get_valid_point
+    
+    print_result
+    
   end
   
   #заполняем массив точек данными из входного массива
