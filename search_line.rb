@@ -8,9 +8,9 @@ class SearchLine
   
     point_array = get_point(points)
     
-    line_array = create_all_line point_array
+    line_array = create_all_line(point_array)
     
-    return get_valid_point line_array
+    return get_valid_point(line_array)
     
   end
   
