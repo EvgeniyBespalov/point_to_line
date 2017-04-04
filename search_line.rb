@@ -10,7 +10,9 @@ class SearchLine
     
     line_array = create_all_line(point_array)
     
-    return get_valid_point(line_array)
+    line_result_array = get_valid_point(line_array)
+    
+    return line_named(line_result_array)
     
   end
   
@@ -69,6 +71,25 @@ class SearchLine
     
     return lines_result
       
+  end
+  
+  def line_named(line_result_array)
+    
+    line_named_result = []
+    
+    line_result_array.each do |line|
+      
+      l = ''
+      line.each do |point|
+        l = l + point.name
+      end
+    
+      line_named_result.push(l)
+      
+    end  
+    
+    return line_named_result
+  
   end
   
 end

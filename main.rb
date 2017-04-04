@@ -7,11 +7,11 @@ arg = ['A,1,1', 'B,2,2', 'C,3,3', 'D,4,4', 'E,2,4', 'G,2,6', 'H,3,1', 'J,3,5', '
 a = SearchLine.new
 
   #выводим результат
-a.search(arg).each { |line|
+  result = a.search(arg)
+  #print a.size
+    result.each { |line|
       print "["
-      line.each do |point| 
-        print point.to_s
-      end
+      print line
       puts "]"
 }
 
